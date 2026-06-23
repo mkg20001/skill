@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "mkgs-skill",
+  "description": "mkg's Claude Skill",
+  "owner": {
+    "name": "Maciej Krüger",
+    "url": "https://github.com/mkg20001"
+  },
+  "plugins": [
+    {
+      "name": "mkgs-skill",
+      "description": "mkg's Claude Skill",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}
