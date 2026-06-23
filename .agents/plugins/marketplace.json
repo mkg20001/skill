@@ -1,0 +1,21 @@
+{
+  "name": "mkgs-skill",
+  "interface": {
+    "displayName": "mkg's Skill"
+  },
+  "plugins": [
+    {
+      "name": "mkgs-skill",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/mkg20001/skill.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
