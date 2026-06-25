@@ -6,8 +6,14 @@ Engineering working agreement. Apply on every non-trivial coding task.
 
 2. **No shortcuts — full implementation, nothing left unwired.** Wire every code path end to end: callers, error handling, config, exports, types, consumers. No TODO, no stubbed return, no dead branch that silently no-ops. If a piece genuinely can't be finished in this pass, say so explicitly and explain what's missing.
 
-3. **Improve at will.** If you spot something adjacent that's broken or clearly wrong while doing the task, fix it. Don't ask permission for obvious, in-scope improvements — make them and note the change.
+3. **Commit fast and often.** Commit at every natural boundary — between tasks, scopes, or logical units — not in one dump at the end. One coherent change per commit, with a message saying what and why. Commit as soon as a unit compiles/passes, before starting the next. Small commits are cheap to review, revert, and bisect.
 
-4. **Ask when the task isn't clear.** If ambiguous requirements or missing context block you from seeing the task clearly, ask before committing to an approach. A clarifying question up front beats building the wrong thing.
+4. **Run on every operating system.** Write code that works on Linux, macOS, and Windows. Build paths with platform path tools (`path.join`, `pathlib.Path`, `filepath.Join`) — never hardcode `/` or `\`. Use the OS-agnostic temp/home dirs and line-ending handling from your stdlib; don't bake in `/tmp`, `$HOME`, or `\r\n`. Where a difference is unavoidable, branch on detected platform explicitly — don't silently fail on the OS you didn't test.
+
+5. **Don't shell out where a module does the job.** If a well-maintained library or the stdlib exposes the operation, call it directly instead of spawning a CLI. File ops, HTTP, JSON/YAML, archives, git, process info: use the module (`fs`/`pathlib`/`shutil`, `requests`/`fetch`, the git binding) — not `cp`/`curl`/`tar`/`git` through a shell. Module calls are cross-platform, return typed results, surface real errors instead of parsed stdout, and dodge shell-injection bugs. Shell out only when there's no binding, the tool is CLI-only, or the subprocess is the thing being tested — and say which.
+
+6. **Improve at will.** If you spot something adjacent that's broken or clearly wrong while doing the task, fix it. Don't ask permission for obvious, in-scope improvements — make them and note the change.
+
+7. **Ask when the task isn't clear.** If ambiguous requirements or missing context block you from seeing the task clearly, ask before committing to an approach. A clarifying question up front beats building the wrong thing.
 
 Pairs with ponytail (write the least code) — minimal *and* complete: wire all of it, with the right library, and ask if unsure.
