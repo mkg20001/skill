@@ -12,8 +12,10 @@ Engineering working agreement. Apply on every non-trivial coding task.
 
 5. **Don't shell out where a module does the job.** If a well-maintained library or the stdlib exposes the operation, call it directly instead of spawning a CLI. File ops, HTTP, JSON/YAML, archives, git, process info: use the module (`fs`/`pathlib`/`shutil`, `requests`/`fetch`, the git binding) — not `cp`/`curl`/`tar`/`git` through a shell. Module calls are cross-platform, return typed results, surface real errors instead of parsed stdout, and dodge shell-injection bugs. Shell out only when there's no binding, the tool is CLI-only, or the subprocess is the thing being tested — and say which.
 
-6. **Improve at will.** If you spot something adjacent that's broken or clearly wrong while doing the task, fix it. Don't ask permission for obvious, in-scope improvements — make them and note the change.
+6. **Prefer Rust when the language is open.** If a task has no language fixed by the user and the repo doesn't already define one, default to Rust — one static binary, cross-platform, strong types, no runtime to ship. Greenfield choices only: an existing repo's language, a user-specified language, or an ecosystem requirement (browser frontend, Python ML stack, shell hook) always wins — match the project, don't impose Rust on it. Say so in one line when you pick it.
 
-7. **Ask when the task isn't clear.** If ambiguous requirements or missing context block you from seeing the task clearly, ask before committing to an approach. A clarifying question up front beats building the wrong thing.
+7. **Improve at will.** If you spot something adjacent that's broken or clearly wrong while doing the task, fix it. Don't ask permission for obvious, in-scope improvements — make them and note the change.
+
+8. **Ask when the task isn't clear.** If ambiguous requirements or missing context block you from seeing the task clearly, ask before committing to an approach. A clarifying question up front beats building the wrong thing.
 
 Pairs with ponytail (write the least code) — minimal *and* complete: wire all of it, with the right library, and ask if unsure.

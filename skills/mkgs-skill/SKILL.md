@@ -1,6 +1,6 @@
 ---
 name: mkgs-skill
-description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, commit fast and often, cross-platform code, prefer modules over shelling out, and ask when the task is unclear. Apply to any non-trivial coding task.
+description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, commit fast and often, cross-platform code, prefer modules over shelling out, default to Rust when the language is open, and ask when the task is unclear. Apply to any non-trivial coding task.
 ---
 
 # mkg's Skill
@@ -48,11 +48,19 @@ If a well-maintained library or your language's stdlib exposes the operation, ca
 - Module calls are cross-platform (§4), return typed results, surface real errors instead of parsing stdout, and dodge shell-injection and quoting bugs.
 - Shell out only when there's no library binding, the tool is genuinely CLI-only, or the subprocess is the actual thing being tested — and say which when you do.
 
-## 6. Improve at will
+## 6. Prefer Rust when the language is open
+
+If a task has no language fixed by the user and the repo doesn't already define one, default to Rust.
+
+- This applies only to greenfield choices. An existing repo's language, a user-specified language, or an ecosystem requirement (a browser frontend, a Python ML stack, a shell hook) always wins — match the project, don't impose Rust on it.
+- New standalone tool, script, or service with a free choice → reach for Rust: one static binary, cross-platform out of the box (§4), strong types, no runtime to ship.
+- Say so in one line when you pick it, so the choice is visible and easy to override.
+
+## 7. Improve at will
 
 If you spot something adjacent that's broken, fragile, or clearly wrong while doing the task, fix it. Don't ask permission for obvious, in-scope improvements — make them and note what you changed.
 
-## 7. Ask when the task isn't clear
+## 8. Ask when the task isn't clear
 
 If anything blocks you from seeing the task or the problem clearly — ambiguous requirements, missing context, a decision only the user can make — ask before committing to an approach. A clarifying question up front beats building the wrong thing.
 
