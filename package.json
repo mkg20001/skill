@@ -1,0 +1,13 @@
+{
+  "name": "mkgs-skill",
+  "version": "0.3.0",
+  "description": "mkg's Claude Skill — research-first, no-shortcut engineering principles.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-sync.js",
+    "bump": "node scripts/bump-version.js",
+    "test": "node scripts/check-sync.js"
+  },
+  "license": "MIT"
+}
