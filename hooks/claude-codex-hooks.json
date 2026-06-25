@@ -6,8 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/.agents/rules/mkgs-skill.md\" 2>/dev/null || exit 0",
-            "commandWindows": "Get-Content \"$env:CLAUDE_PLUGIN_ROOT\\.agents\\rules\\mkgs-skill.md\" -ErrorAction SilentlyContinue",
+            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/AGENTS.md\" 2>/dev/null || exit 0",
+            "commandWindows": "Get-Content \"$env:CLAUDE_PLUGIN_ROOT\\AGENTS.md\" -ErrorAction SilentlyContinue",
             "timeout": 5,
             "statusMessage": "Loading mkg's skill..."
           }

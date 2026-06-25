@@ -10,7 +10,7 @@
   "repository": "https://github.com/mkg20001/skill",
   "license": "MIT",
   "keywords": ["engineering", "research-first", "no-shortcuts", "productivity"],
-  "skills": "./skills/",
+  "skills": "./.agents/skills/",
   "hooks": "./hooks/claude-codex-hooks.json",
   "interface": {
     "displayName": "mkg's Skill",

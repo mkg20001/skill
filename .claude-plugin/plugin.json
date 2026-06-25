@@ -6,5 +6,6 @@
     "name": "Maciej Krüger",
     "url": "https://github.com/mkg20001"
   },
+  "skills": "./.agents/skills/",
   "hooks": "./hooks/claude-codex-hooks.json"
 }
