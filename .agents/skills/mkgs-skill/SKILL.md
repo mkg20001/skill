@@ -1,6 +1,6 @@
 ---
 name: mkgs-skill
-description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, schema changes only via migrations, commit fast and often, cross-platform code, prefer modules over shelling out, default to Rust when the language is open, and ask when the task is unclear. Apply to any non-trivial coding task.
+description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, schema changes only via migrations, commit fast and often, cross-platform code, prefer modules over shelling out, default to Rust when the language is open, ask when the task is unclear, and use generic agent conventions (AGENTS.md, .agents/skills) over vendor-specific ones. Apply to any non-trivial coding task.
 ---
 
 # mkg's Skill
@@ -72,6 +72,14 @@ If you spot something adjacent that's broken, fragile, or clearly wrong while do
 ## 9. Ask when the task isn't clear
 
 If anything blocks you from seeing the task or the problem clearly — ambiguous requirements, missing context, a decision only the user can make — ask before committing to an approach. A clarifying question up front beats building the wrong thing.
+
+## 10. Use generic agent conventions, not vendor-specific ones
+
+Put shared agent config where every agent can read it, not behind one vendor's filenames.
+
+- Root instructions go in `AGENTS.md`, skills under `.agents/skills/` — not Claude-only `CLAUDE.md` or `skills/`.
+- `AGENTS.md` links to the canonical skill rather than duplicating it, so there's a single source of truth no copy can drift from.
+- Keep vendor manifests (`.claude-plugin/`, `.codex-plugin/`) as thin pointers into the generic layout — the rules themselves live in one place.
 
 ## Companions
 
