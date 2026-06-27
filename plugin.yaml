@@ -1,0 +1,8 @@
+name: mkgs-skill
+version: 0.3.0
+description: mkg's engineering principles for Hermes Agent — always-on context and the bundled skill.
+author: Maciej Krüger
+provides_hooks:
+  - pre_llm_call
+provides_skills:
+  - mkgs-skill

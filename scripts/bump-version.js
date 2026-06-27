@@ -30,4 +30,9 @@ for (const rel of manifests) {
   fs.writeFileSync(file, JSON.stringify(j, null, 2) + '\n');
 }
 
-console.log(`bumped version ${current} -> ${next} in ${manifests.length} manifests`);
+// Hermes manifest is YAML — rewrite just the `version:` line.
+const yamlFile = path.join(root, 'plugin.yaml');
+const yaml = fs.readFileSync(yamlFile, 'utf8');
+fs.writeFileSync(yamlFile, yaml.replace(/^version:\s*\S+\s*$/m, `version: ${next}`));
+
+console.log(`bumped version ${current} -> ${next} in ${manifests.length} manifests + plugin.yaml`);

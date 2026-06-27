@@ -64,8 +64,24 @@ const hookRef = hook.match(/\$\{CLAUDE_PLUGIN_ROOT\}\/([^"\\\s]+)/);
 if (!hookRef) errors.push('hook: no ${CLAUDE_PLUGIN_ROOT}/<file> reference found');
 else if (!exists(hookRef[1])) errors.push(`hook: references missing file ${hookRef[1]}`);
 
+// 5. Hermes manifest: same version, entrypoint exists, declared skills exist.
+const yaml = read('plugin.yaml');
+const yamlVersion = yaml.match(/^version:\s*(\S+)\s*$/m)?.[1];
+if (!yamlVersion) errors.push('plugin.yaml: no version found');
+else if (yamlVersion !== versions[0].v) {
+  errors.push(`version mismatch: plugin.yaml=${yamlVersion} vs ${versions[0].m}=${versions[0].v}`);
+}
+if (!exists('__init__.py')) errors.push('plugin.yaml: entrypoint __init__.py is missing');
+// provides_skills entries must each have a skill dir. Grab the block, then its `- name` items.
+const skillsBlock = yaml.match(/^provides_skills:\n((?:\s*-\s*\S+\s*\n?)+)/m)?.[1] ?? '';
+for (const m of skillsBlock.matchAll(/-\s*(\S+)/g)) {
+  if (!exists(`.agents/skills/${m[1]}`)) {
+    errors.push(`plugin.yaml: provides_skills -> ${m[1]} has no .agents/skills/${m[1]}/`);
+  }
+}
+
 if (errors.length) {
   console.error('check-sync FAILED:\n- ' + errors.join('\n- '));
   process.exit(1);
 }
-console.log(`check-sync OK (${skillTitles.length} principles, version ${versions[0].v})`);
+console.log(`check-sync OK (${skillTitles.length} principles, version ${versions[0].v}, plugin.yaml in sync)`);
