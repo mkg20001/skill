@@ -18,21 +18,21 @@ Pairs well with [ponytail](https://github.com/DietrichGebert/ponytail) and [ECC]
 
 ### Codex
 
-Codex reads the `.codex-plugin/plugin.json` manifest. Clone the repo into your Codex plugins directory:
-
 ```sh
-git clone https://github.com/mkg20001/skill ~/.codex/plugins/mkgs-skill
+# Add this repo as a marketplace source (one-time setup)
+codex plugin marketplace add mkg20001/skill
+
+# Install the plugin
+codex plugin add mkgs-skill@mkgs-skill
 ```
 
 ### Hermes Agent
 
-The repo is a Hermes plugin (`plugin.yaml` + `__init__.py`). It registers the bundled skill and an always-on `pre_llm_call` hook that injects the rules before every LLM turn. Clone it into your Hermes plugins directory:
+The repo is a Hermes plugin (`plugin.yaml` + `__init__.py`) — it registers the bundled skill and an always-on `pre_llm_call` hook that injects the rules before every LLM turn.
 
 ```sh
-git clone https://github.com/mkg20001/skill <hermes-plugins-dir>/mkgs-skill
+hermes plugins install mkg20001/skill --enable
 ```
-
-Then enable `mkgs-skill` in your Hermes config if your setup doesn't auto-load plugins.
 
 ### Any other agent (generic)
 
