@@ -22,4 +22,6 @@ Engineering working agreement. Apply on every non-trivial coding task.
 
 10. **Use generic agent conventions, not vendor-specific ones.** Put root instructions in `AGENTS.md` and skills under `.agents/skills/` — not Claude-only `CLAUDE.md` or `skills/`. `AGENTS.md` links to the canonical skill rather than duplicating it; vendor manifests (`.claude-plugin/`, `.codex-plugin/`) stay thin pointers into the generic layout.
 
+11. **Keep descriptions concise.** Commit messages, comments, docstrings, PR bodies, log lines: say what's needed, then stop. One-line commit subject saying what changed, a body only when the why isn't obvious from the diff — no changelog essays restating every hunk. Comment the non-obvious (why this approach, what constraint forced it), not code that already reads clearly. One clear sentence beats a paragraph nobody reads.
+
 Pairs with ponytail (write the least code) — minimal *and* complete: wire all of it, with the right library, and ask if unsure.

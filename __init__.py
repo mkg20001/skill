@@ -21,7 +21,8 @@ _FALLBACK = (
     "Full implementations, nothing left unwired. Schema changes only via migrations. "
     "Commit fast and often. Cross-platform code. Prefer modules over shelling out. "
     "Default to Rust when the language is open. Improve adjacent breakage at will. "
-    "Ask when the task is unclear. Use generic agent conventions (AGENTS.md, .agents/skills)."
+    "Ask when the task is unclear. Use generic agent conventions (AGENTS.md, .agents/skills). "
+    "Keep descriptions concise."
 )
 
 

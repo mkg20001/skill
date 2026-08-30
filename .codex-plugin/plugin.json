@@ -1,6 +1,6 @@
 {
   "name": "mkgs-skill",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "mkg's Claude Skill — research-first, no-shortcut engineering principles.",
   "author": {
     "name": "Maciej Krüger",
@@ -9,7 +9,12 @@
   "homepage": "https://github.com/mkg20001/skill",
   "repository": "https://github.com/mkg20001/skill",
   "license": "MIT",
-  "keywords": ["engineering", "research-first", "no-shortcuts", "productivity"],
+  "keywords": [
+    "engineering",
+    "research-first",
+    "no-shortcuts",
+    "productivity"
+  ],
   "skills": "./.agents/skills/",
   "hooks": "./hooks/claude-codex-hooks.json",
   "interface": {
@@ -18,7 +23,10 @@
     "longDescription": "Research before building (no handrolling), full implementations with nothing left unwired, improve at will, and ask when the task is unclear.",
     "developerName": "Maciej Krüger",
     "category": "Productivity",
-    "capabilities": ["Instructions", "Lifecycle hooks"],
+    "capabilities": [
+      "Instructions",
+      "Lifecycle hooks"
+    ],
     "websiteURL": "https://github.com/mkg20001/skill",
     "defaultPrompt": [
       "Apply mkg's skill to this task.",

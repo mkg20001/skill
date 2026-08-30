@@ -1,6 +1,6 @@
 ---
 name: mkgs-skill
-description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, schema changes only via migrations, commit fast and often, cross-platform code, prefer modules over shelling out, default to Rust when the language is open, ask when the task is unclear, and use generic agent conventions (AGENTS.md, .agents/skills) over vendor-specific ones. Apply to any non-trivial coding task.
+description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, schema changes only via migrations, commit fast and often, cross-platform code, prefer modules over shelling out, default to Rust when the language is open, ask when the task is unclear, use generic agent conventions (AGENTS.md, .agents/skills) over vendor-specific ones, and keep descriptions concise. Apply to any non-trivial coding task.
 ---
 
 # mkg's Skill
@@ -80,6 +80,14 @@ Put shared agent config where every agent can read it, not behind one vendor's f
 - Root instructions go in `AGENTS.md`, skills under `.agents/skills/` — not Claude-only `CLAUDE.md` or `skills/`.
 - `AGENTS.md` links to the canonical skill rather than duplicating it, so there's a single source of truth no copy can drift from.
 - Keep vendor manifests (`.claude-plugin/`, `.codex-plugin/`) as thin pointers into the generic layout — the rules themselves live in one place.
+
+## 11. Keep descriptions concise
+
+Commit messages, comments, docstrings, PR bodies, log lines: say what's needed, then stop.
+
+- One-line commit subject saying what changed; a body only when the *why* isn't obvious from the diff. No changelog essays, no bullet list restating every hunk.
+- Comment the non-obvious — why this approach, what constraint forced it. Don't narrate code that already reads clearly.
+- Same for docstrings, PR descriptions, and error/log messages: one clear sentence beats a paragraph nobody reads.
 
 ## Companions
 
