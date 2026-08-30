@@ -2,7 +2,7 @@
 // Verifies the skill's rule sources stay consistent:
 //  - SKILL.md (expanded) and .agents/rules (compact) list the same principles, same order
 //  - AGENTS.md points at an existing SKILL.md
-//  - both plugin manifests share one version and reference files that exist
+//  - every manifest (incl. package.json) shares one version and references files that exist
 //  - the session hook references an existing rule file
 import fs from 'node:fs';
 import path from 'node:path';
@@ -46,7 +46,7 @@ if (!link) errors.push('AGENTS.md: no link to a SKILL.md found');
 else if (!exists(link[1])) errors.push(`AGENTS.md: links to missing file ${link[1]}`);
 
 // 3. Plugin manifests: same version, referenced paths exist.
-const manifests = ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json'];
+const manifests = ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json', 'package.json'];
 const versions = manifests.map((m) => {
   const j = JSON.parse(read(m));
   for (const key of ['skills', 'hooks']) {
@@ -54,8 +54,8 @@ const versions = manifests.map((m) => {
   }
   return { m, v: j.version };
 });
-if (versions[0].v !== versions[1].v) {
-  errors.push(`version mismatch: ${versions[0].m}=${versions[0].v} vs ${versions[1].m}=${versions[1].v}`);
+for (const { m, v } of versions.slice(1)) {
+  if (v !== versions[0].v) errors.push(`version mismatch: ${versions[0].m}=${versions[0].v} vs ${m}=${v}`);
 }
 
 // 4. Hook references an existing rule file.

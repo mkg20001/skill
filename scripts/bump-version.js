@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// Bumps the plugin version in both manifests in lockstep.
+// Bumps the plugin version in every manifest in lockstep.
 // Usage: node scripts/bump-version.js [major|minor|patch|x.y.z]   (default: patch)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
-const manifests = ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json'];
+const manifests = ['.claude-plugin/plugin.json', '.codex-plugin/plugin.json', 'package.json'];
 const arg = (process.argv[2] || 'patch').trim();
 
 function nextVersion(current, bump) {
