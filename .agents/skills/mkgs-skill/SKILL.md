@@ -1,6 +1,6 @@
 ---
 name: mkgs-skill
-description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, schema changes only via migrations, commit fast and often, cross-platform code, prefer modules over shelling out, default to Rust when the language is open, ask when the task is unclear, use generic agent conventions (AGENTS.md, .agents/skills) over vendor-specific ones, and keep descriptions concise. Apply to any non-trivial coding task.
+description: mkg's engineering principles — research before building, no handrolling, full no-shortcut implementations with nothing left unwired, schema changes only via migrations, commit fast and often, cross-platform code, prefer modules over shelling out, default to Rust when the language is open, ask when the task is unclear, use generic agent conventions (AGENTS.md, .agents/skills) over vendor-specific ones, keep descriptions concise, and keep fallbacks only when necessary and beneficial. Apply to any non-trivial coding task.
 ---
 
 # mkg's Skill
@@ -88,6 +88,15 @@ Commit messages, comments, docstrings, PR bodies, log lines: say what's needed, 
 - One-line commit subject saying what changed; a body only when the *why* isn't obvious from the diff. No changelog essays, no bullet list restating every hunk.
 - Comment the non-obvious — why this approach, what constraint forced it. Don't narrate code that already reads clearly.
 - Same for docstrings, PR descriptions, and error/log messages: one clear sentence beats a paragraph nobody reads.
+
+## 12. Keep fallbacks only when necessary and beneficial
+
+CRITICAL: A fallback that hides a failure is worse than the failure. Default to letting it fail loudly.
+
+- Keep a fallback when degraded operation is genuinely better than stopping — a cache miss refetching, a retry on a flaky network, an optional feature the app can run without.
+- Drop it when it papers over a bug: `except: pass`, a default value substituted for a failed lookup, a stub returned when a dependency is missing, a second code path kept "just in case".
+- Never let a fallback silently change behaviour. If one fires, log it with the real error and say what was substituted.
+- Two paths mean two paths to test and two to debug at 3am. If the fallback path can't be justified in one sentence, delete it and let the error surface.
 
 ## Companions
 

@@ -24,4 +24,6 @@ Engineering working agreement. Apply on every non-trivial coding task.
 
 11. **Keep descriptions concise.** Commit messages, comments, docstrings, PR bodies, log lines: say what's needed, then stop. One-line commit subject saying what changed, a body only when the why isn't obvious from the diff — no changelog essays restating every hunk. Comment the non-obvious (why this approach, what constraint forced it), not code that already reads clearly. One clear sentence beats a paragraph nobody reads.
 
+12. **Keep fallbacks only when necessary and beneficial.** A fallback that hides a failure is worse than the failure — default to failing loudly. Keep one when degraded operation genuinely beats stopping (cache miss refetching, retry on a flaky network, optional feature the app runs without). Drop it when it papers over a bug: `except: pass`, a default substituted for a failed lookup, a stub for a missing dependency, a second path kept "just in case". Never let a fallback silently change behaviour — if it fires, log the real error and what was substituted. Two paths mean two to test and two to debug at 3am.
+
 Pairs with ponytail (write the least code) — minimal *and* complete: wire all of it, with the right library, and ask if unsure.

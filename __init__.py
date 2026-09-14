@@ -22,7 +22,7 @@ _FALLBACK = (
     "Commit fast and often. Cross-platform code. Prefer modules over shelling out. "
     "Default to Rust when the language is open. Improve adjacent breakage at will. "
     "Ask when the task is unclear. Use generic agent conventions (AGENTS.md, .agents/skills). "
-    "Keep descriptions concise."
+    "Keep descriptions concise. Keep fallbacks only when necessary and beneficial."
 )
 
 
